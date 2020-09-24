@@ -84,7 +84,8 @@ class CNewEggScrape(CAutoBrowserCsvScrape):
                     pages.append(page)
 
                     print('  {0}: [{1}] - Page: {2}/{3}'.format(self.m_name, q, curPage, totalPages))
-                    productElements = soup.find_all('div', {'class':'item-container'})
+                    elementsRoot = soup.find('div', {'class':'list-wrap'})
+                    productElements = elementsRoot.find_all('div', {'class':'item-container'})
                     print('    Found: {0} Products'.format(len(productElements)))
                     for p in productElements:
                         aTagElement = p.find('a', {'class':'item-img'})
